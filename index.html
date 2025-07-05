@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Conversation Starters</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .category-btn {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            border: none;
+            border-radius: 15px;
+            padding: 15px 10px;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(79, 172, 254, 0.3);
+        }
+
+        .category-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(79, 172, 254, 0.4);
+        }
+
+        .category-btn:active {
+            transform: translateY(0);
+        }
+
+        .food { background: linear-gradient(135deg, #fd746c 0%, #ff9068 100%); }
+        .fruit { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .fairy { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .superhero { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .never { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .work { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+        .personal { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); }
+        .singapore { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); }
+        .quick { background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); }
+
+        .question-display {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-text {
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .placeholder {
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
+        }
+
+        .random-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border: none;
+            border-radius: 15px;
+            padding: 15px 30px;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(245, 87, 108, 0.3);
+            margin-top: 20px;
+        }
+
+        .random-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(245, 87, 108, 0.4);
+        }
+
+        .emoji {
+            font-size: 20px;
+            margin-right: 8px;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px;
+                padding: 20px;
+            }
+            
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .question-text {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Team Conversation Starters</h1>
+        
+        <div class="category-grid">
+            <button class="category-btn food" onclick="getRandomQuestion('food')">
+                <span class="emoji">🍽️</span>Food & Dining
+            </button>
+            <button class="category-btn fruit" onclick="getRandomQuestion('fruit')">
+                <span class="emoji">🍎</span>Fruit Analogies
+            </button>
+            <button class="category-btn fairy" onclick="getRandomQuestion('fairy')">
+                <span class="emoji">🏰</span>Fairy Tales
+            </button>
+            <button class="category-btn superhero" onclick="getRandomQuestion('superhero')">
+                <span class="emoji">🦸</span>Superheroes
+            </button>
+            <button class="category-btn never" onclick="getRandomQuestion('never')">
+                <span class="emoji">📝</span>Complete the Sentence
+            </button>
+            <button class="category-btn work" onclick="getRandomQuestion('work')">
+                <span class="emoji">💼</span>Work Fun
+            </button>
+            <button class="category-btn personal" onclick="getRandomQuestion('personal')">
+                <span class="emoji">🌟</span>Personal
+            </button>
+            <button class="category-btn singapore" onclick="getRandomQuestion('singapore')">
+                <span class="emoji">🇸🇬</span>Singapore
+            </button>
+
+        </div>
+
+        <div class="question-display">
+            <div class="question-text placeholder">
+                Select a category above to get a random conversation starter!
+            </div>
+        </div>
+
+        <button class="random-btn" onclick="getRandomQuestion('all')">
+            🎲 Surprise Me! (Any Category)
+        </button>
+    </div>
+
+    <script>
+        const questions = {
+            food: [
+                "What's the weirdest food combination you actually love?",
+                "If you could only eat one type of cuisine for a month, what would it be?",
+                "What's a food you hated as a kid but love now?",
+                "What's your go-to midnight snack?",
+                "If you had to describe your cooking skills in one word, what would it be?",
+                "Sweet or savory snacks?",
+                "Coffee or tea person?",
+                "Pineapple on pizza - yes or no?",
+                "Cai png or Western food for lunch?",
+                "Bubble tea or traditional tea?",
+                "What's your go-to comfort food when you're stressed?",
+                "What's the most adventurous food you've ever tried?"
+            ],
+            fruit: [
+                "If you were a fruit, what would you be and why?",
+                "Which fruit best describes your personality at work?",
+                "If your weekend mood was a fruit, what would it be?",
+                "What fruit would you be if you were having a bad day?",
+                "If you could only eat one fruit for the rest of your life, which would it be?",
+                "Which fruit represents your energy level on Monday mornings?"
+            ],
+            fairy: [
+                "If you were a fairy tale character, who would you be and why?",
+                "Which fairy tale villain do you secretly understand?",
+                "If you could rewrite one fairy tale ending, which would it be?",
+                "What's your favorite childhood fairy tale and why?",
+                "If you had three wishes like in Aladdin, what would they be?",
+                "Which fairy tale character would make the best coworker?",
+                "If you lived in a fairy tale world, what would your job be?",
+                "If our office was a fairy tale, what role would you play?"
+            ],
+            superhero: [
+                "If you could have any superpower, what would it be?",
+                "Which superhero would you want as your workout buddy?",
+                "What would your superhero name be based on your personality?",
+                "If you were a superhero, what would be your biggest weakness?",
+                "Which superhero has the most relatable day job?",
+                "If you could team up with any superhero, who would it be?",
+                "What everyday problem would you solve if you were a superhero?",
+                "What superpower would make your job easiest?",
+                "If you could give any coworker a superpower, what would it be?"
+            ],
+            never: [
+                "If ever... just so that...",
+                "No matter... because...",
+                "If I were... I would...",
+                "I have never... because...",
+                "I am... and..."
+            ],
+            work: [
+                "What's the most unusual problem you've solved at work recently?",
+                "If you could swap jobs with anyone in the company for a day, who would it be and why?",
+                "What's a skill you use outside of work that would surprise your colleagues?",
+                "What's one thing about our department that newcomers would find surprising?",
+                "If our team had a theme song, what would it be?",
+                "What's a collaboration you've been part of that you're particularly proud of?"
+            ],
+            personal: [
+                "What's something you've learned recently that you wish you'd known earlier?",
+                "If you could master any hobby instantly, what would you choose?",
+                "What's the best piece of advice you've received this year?",
+                "What's your most-used app that isn't work-related?",
+                "If you could have dinner with any three people (living or dead), who would they be?",
+                "What's something that always makes you smile, no matter how your day is going?"
+            ],
+            singapore: [
+                "East side or West side of Singapore?",
+                "Favorite hawker center in Singapore?",
+                "Laksa or mee goreng?",
+                "Favorite local dessert?",
+                "Best void deck memory?",
+                "MRT or bus person?",
+                "Favorite Singapore festival?",
+                "Best local coffee shop?",
+                "Favorite weekend activity in Singapore?"
+            ],
+
+        };
+
+        function getRandomQuestion(category) {
+            const display = document.querySelector('.question-text');
+            
+            if (category === 'all') {
+                // Get random question from any category
+                const allCategories = Object.keys(questions);
+                const randomCategory = allCategories[Math.floor(Math.random() * allCategories.length)];
+                const categoryQuestions = questions[randomCategory];
+                const randomQuestion = categoryQuestions[Math.floor(Math.random() * categoryQuestions.length)];
+                display.textContent = randomQuestion;
+                display.classList.remove('placeholder');
+            } else {
+                // Get random question from specific category
+                const categoryQuestions = questions[category];
+                const randomQuestion = categoryQuestions[Math.floor(Math.random() * categoryQuestions.length)];
+                display.textContent = randomQuestion;
+                display.classList.remove('placeholder');
+            }
+        }
+    </script>
+</body>
+</html>
